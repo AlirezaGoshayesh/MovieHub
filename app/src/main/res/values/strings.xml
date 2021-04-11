@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieHub</string>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
 </resources>
