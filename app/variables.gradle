@@ -1,0 +1,26 @@
+ext {
+    applicationId = "com.test.moviehub"
+    appVersionName = '1.0.0'
+    appVersionCode = 1
+    //app
+    appBuildToolsVersion = "30.0.2"
+    appCompileSdkVersion = 30
+    appMinSdkVersion = 21
+    appTargetSdkVersion = 30
+    //dependencies
+    legacyVersion = '1.0.0'
+    lottieVersion = '3.6.0'
+    appcompatVersion = '1.3.0-rc01'
+    ktxVersion = '1.3.2'
+    constraintlayoutVersion = '2.0.4'
+    glideVersion = '4.11.0'
+    navigationVersion = '2.3.5'
+    recyclerviewVersion = '1.2.0'
+    retrofitVersion = '2.4.0'
+    hiltVersion = '2.31.2-alpha'
+    materialVersion = '1.3.0'
+    hiltJetpackVersion = '1.0.0-alpha03'
+    retrofitVersion = '2.6.0'
+    gsonVersion = '2.8.6'
+    okhttpInterceptorVersion = '3.12.1'
+}
