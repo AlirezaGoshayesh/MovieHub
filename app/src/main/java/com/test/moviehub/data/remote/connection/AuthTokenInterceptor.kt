@@ -12,7 +12,7 @@ class AuthTokenInterceptor @Inject constructor() : Interceptor {
                 .newBuilder()
                 .addHeader(
                     "Authorization",
-                    "Bearer"
+                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTA4NGY4NWVhOTBiYjdjYWYwMDVmOGExZjI4NTU4YSIsInN1YiI6IjYwNzJlMTVmOGRkYzM0MDA0MGE5NTliZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IEEpO7C7vDWS3gJBOtG0hNVn502Z8WdGynwssp6gexc"
                 )
                 .build()
         )
