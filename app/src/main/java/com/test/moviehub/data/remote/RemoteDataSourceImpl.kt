@@ -14,7 +14,7 @@ class RemoteDataSourceImpl @Inject constructor(private val service: MService) :
     RemoteDataSource {
     override suspend fun searchMovies(searchKeyword: String): Flow<PagingData<MovieResult>> {
         return Pager(
-            config = PagingConfig(enablePlaceholders = false, pageSize = 30),
+            config = PagingConfig(enablePlaceholders = true, pageSize = 30),
             pagingSourceFactory = {
                 SearchResultsDataSource(service, searchKeyword)
             }

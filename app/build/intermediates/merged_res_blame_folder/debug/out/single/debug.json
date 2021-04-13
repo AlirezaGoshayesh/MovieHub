@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/layout_item_moview.xml.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/item_moview.xml"
+    },
+    {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
