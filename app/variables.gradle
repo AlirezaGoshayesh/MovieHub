@@ -23,4 +23,5 @@ ext {
     retrofitVersion = '2.6.0'
     gsonVersion = '2.8.6'
     okhttpInterceptorVersion = '3.12.1'
+    paging_version = "3.0.0-beta03"
 }
