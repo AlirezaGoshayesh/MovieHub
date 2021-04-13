@@ -3,6 +3,7 @@ package com.test.moviehub.data.remote
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.test.moviehub.data.model.GetDetailsResponse
 import com.test.moviehub.data.model.MovieResult
 import com.test.moviehub.data.remote.connection.MService

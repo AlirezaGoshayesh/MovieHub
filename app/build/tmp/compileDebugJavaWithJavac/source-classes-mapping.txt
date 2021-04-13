@@ -1,34 +1,134 @@
-com/test/moviehub/di/DataModule_ProvideRemoteDataSourceFactory.java
- com.test.moviehub.di.DataModule_ProvideRemoteDataSourceFactory
-com/test/moviehub/data/remote/RemoteDataSourceImpl_Factory.java
- com.test.moviehub.data.remote.RemoteDataSourceImpl_Factory
-com/test/moviehub/BuildConfig.java
- com.test.moviehub.BuildConfig
+com/test/moviehub/DataBinderMapperImpl.java
+ com.test.moviehub.DataBinderMapperImpl
+ com.test.moviehub.DataBinderMapperImpl$InnerBrLookup
+ com.test.moviehub.DataBinderMapperImpl$InnerLayoutIdLookup
+hilt_aggregated_deps/com_test_moviehub_component_App_GeneratedInjectorModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_component_App_GeneratedInjectorModuleDeps
+androidx/databinding/DataBinderMapperImpl.java
+ androidx.databinding.DataBinderMapperImpl
 com/test/moviehub/di/NetworkModule_ProvideHttpLoggingInterceptorFactory.java
  com.test.moviehub.di.NetworkModule_ProvideHttpLoggingInterceptorFactory
  com.test.moviehub.di.NetworkModule_ProvideHttpLoggingInterceptorFactory$InstanceHolder
+hilt_aggregated_deps/com_test_moviehub_component_viewModels_SearchMoviesVM_HiltModules_BindsModuleModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_component_viewModels_SearchMoviesVM_HiltModules_BindsModuleModuleDeps
 com/test/moviehub/data/RepositoryImpl_Factory.java
  com.test.moviehub.data.RepositoryImpl_Factory
 com/test/moviehub/di/DataModule_ProvideRepositoryFactory.java
  com.test.moviehub.di.DataModule_ProvideRepositoryFactory
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
+com/test/moviehub/component/activities/MainActivity_GeneratedInjector.java
+ com.test.moviehub.component.activities.MainActivity_GeneratedInjector
 com/test/moviehub/di/DataModule_ProvideErrorHandlerFactory.java
  com.test.moviehub.di.DataModule_ProvideErrorHandlerFactory
  com.test.moviehub.di.DataModule_ProvideErrorHandlerFactory$InstanceHolder
-com/test/moviehub/data/remote/connection/AuthTokenInterceptor_Factory.java
- com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory
- com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory$InstanceHolder
 com/test/moviehub/component/dialogs/LoadingDialog_Factory.java
  com.test.moviehub.component.dialogs.LoadingDialog_Factory
-com/test/moviehub/di/NetworkModule_ProvideGsonFactoryFactory.java
- com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory
- com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory$InstanceHolder
-com/test/moviehub/di/NetworkModule_ProvidesOkHttpClientFactory.java
- com.test.moviehub.di.NetworkModule_ProvidesOkHttpClientFactory
-hilt_aggregated_deps/com_test_moviehub_di_NetworkModuleModuleDeps.java
- hilt_aggregated_deps.com_test_moviehub_di_NetworkModuleModuleDeps
+com/test/moviehub/BR.java
+ com.test.moviehub.BR
+com/test/moviehub/component/viewModels/SearchMoviesVM_Factory.java
+ com.test.moviehub.component.viewModels.SearchMoviesVM_Factory
+com/test/moviehub/component/viewModels/SearchMoviesVM_HiltModules_KeyModule_ProvideFactory.java
+ com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules_KeyModule_ProvideFactory
+ com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules_KeyModule_ProvideFactory$InstanceHolder
 com/test/moviehub/utils/NetworkConnection_Factory.java
  com.test.moviehub.utils.NetworkConnection_Factory
 com/test/moviehub/di/NetworkModule_ProvideStickersServiceFactory.java
  com.test.moviehub.di.NetworkModule_ProvideStickersServiceFactory
 hilt_aggregated_deps/com_test_moviehub_di_DataModuleModuleDeps.java
  hilt_aggregated_deps.com_test_moviehub_di_DataModuleModuleDeps
+com/test/moviehub/component/activities/Hilt_MainActivity.java
+ com.test.moviehub.component.activities.Hilt_MainActivity
+com/vada/parents/component/viewModels/GetDetailsVM_Factory.java
+ com.vada.parents.component.viewModels.GetDetailsVM_Factory
+hilt_aggregated_deps/com_test_moviehub_component_activities_MainActivity_GeneratedInjectorModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_component_activities_MainActivity_GeneratedInjectorModuleDeps
+com/test/moviehub/di/DataModule_ProvideRemoteDataSourceFactory.java
+ com.test.moviehub.di.DataModule_ProvideRemoteDataSourceFactory
+hilt_aggregated_deps/com_vada_parents_component_viewModels_GetDetailsVM_HiltModules_KeyModuleModuleDeps.java
+ hilt_aggregated_deps.com_vada_parents_component_viewModels_GetDetailsVM_HiltModules_KeyModuleModuleDeps
+com/test/moviehub/component/viewModels/SearchMoviesVM_HiltModules.java
+ com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules
+ com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules$BindsModule
+ com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules$KeyModule
+com/test/moviehub/data/remote/RemoteDataSourceImpl_Factory.java
+ com.test.moviehub.data.remote.RemoteDataSourceImpl_Factory
+com/test/moviehub/BuildConfig.java
+ com.test.moviehub.BuildConfig
+com/test/moviehub/component/App_HiltComponents.java
+ com.test.moviehub.component.App_HiltComponents
+ com.test.moviehub.component.App_HiltComponents$ActivityC
+ com.test.moviehub.component.App_HiltComponents$ActivityC$Builder
+ com.test.moviehub.component.App_HiltComponents$ActivityCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$ActivityRetainedC
+ com.test.moviehub.component.App_HiltComponents$ActivityRetainedC$Builder
+ com.test.moviehub.component.App_HiltComponents$ActivityRetainedCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$FragmentC
+ com.test.moviehub.component.App_HiltComponents$FragmentC$Builder
+ com.test.moviehub.component.App_HiltComponents$FragmentCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$ServiceC
+ com.test.moviehub.component.App_HiltComponents$ServiceC$Builder
+ com.test.moviehub.component.App_HiltComponents$ServiceCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$SingletonC
+ com.test.moviehub.component.App_HiltComponents$ViewC
+ com.test.moviehub.component.App_HiltComponents$ViewC$Builder
+ com.test.moviehub.component.App_HiltComponents$ViewCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$ViewModelC
+ com.test.moviehub.component.App_HiltComponents$ViewModelC$Builder
+ com.test.moviehub.component.App_HiltComponents$ViewModelCBuilderModule
+ com.test.moviehub.component.App_HiltComponents$ViewWithFragmentC
+ com.test.moviehub.component.App_HiltComponents$ViewWithFragmentC$Builder
+ com.test.moviehub.component.App_HiltComponents$ViewWithFragmentCBuilderModule
+com/test/moviehub/component/DaggerApp_HiltComponents_SingletonC.java
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$1
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCImpl$ViewWithFragmentCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCImpl$ViewWithFragmentCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$ViewCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$ViewCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCImpl
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCImpl$SwitchingProvider
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$Builder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ServiceCBuilder
+ com.test.moviehub.component.DaggerApp_HiltComponents_SingletonC$ServiceCImpl
+com/test/moviehub/component/App_GeneratedInjector.java
+ com.test.moviehub.component.App_GeneratedInjector
+hilt_aggregated_deps/com_test_moviehub_component_viewModels_SearchMoviesVM_HiltModules_KeyModuleModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_component_viewModels_SearchMoviesVM_HiltModules_KeyModuleModuleDeps
+com/test/moviehub/data/remote/connection/AuthTokenInterceptor_Factory.java
+ com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory
+ com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory$InstanceHolder
+com/vada/parents/component/viewModels/GetDetailsVM_HiltModules.java
+ com.vada.parents.component.viewModels.GetDetailsVM_HiltModules
+ com.vada.parents.component.viewModels.GetDetailsVM_HiltModules$BindsModule
+ com.vada.parents.component.viewModels.GetDetailsVM_HiltModules$KeyModule
+com/test/moviehub/domain/GetDetails_Factory.java
+ com.test.moviehub.domain.GetDetails_Factory
+com/test/moviehub/di/NetworkModule_ProvideGsonFactoryFactory.java
+ com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory
+ com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory$InstanceHolder
+com/test/moviehub/di/NetworkModule_ProvidesOkHttpClientFactory.java
+ com.test.moviehub.di.NetworkModule_ProvidesOkHttpClientFactory
+com/test/moviehub/DataBindingTriggerClass.java
+ com.test.moviehub.DataBindingTriggerClass
+hilt_aggregated_deps/com_test_moviehub_di_NetworkModuleModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_di_NetworkModuleModuleDeps
+com/test/moviehub/component/Hilt_App.java
+ com.test.moviehub.component.Hilt_App
+ com.test.moviehub.component.Hilt_App$1
+com/test/moviehub/domain/SearchMovies_Factory.java
+ com.test.moviehub.domain.SearchMovies_Factory
+com/vada/parents/component/viewModels/GetDetailsVM_HiltModules_KeyModule_ProvideFactory.java
+ com.vada.parents.component.viewModels.GetDetailsVM_HiltModules_KeyModule_ProvideFactory
+ com.vada.parents.component.viewModels.GetDetailsVM_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+hilt_aggregated_deps/com_vada_parents_component_viewModels_GetDetailsVM_HiltModules_BindsModuleModuleDeps.java
+ hilt_aggregated_deps.com_vada_parents_component_viewModels_GetDetailsVM_HiltModules_BindsModuleModuleDeps
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent

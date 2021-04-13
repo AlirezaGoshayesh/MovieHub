@@ -949,6 +949,7 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="dataBinding" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
@@ -969,6 +970,8 @@
     <item name="mtrl_view_tag_bottom_padding" type="id"/>
     <item name="nav_controller_view_tag" type="id"/>
     <item name="nav_host_fragment_container" type="id"/>
+    <item name="onAttachStateChangeListener" type="id"/>
+    <item name="onDateChanged" type="id"/>
     <item name="parent_matrix" type="id"/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
@@ -995,6 +998,7 @@
     <item name="tag_window_insets_animation_callback" type="id"/>
     <item name="text" type="id"/>
     <item name="text2" type="id"/>
+    <item name="textWatcher" type="id"/>
     <item name="text_input_error_icon" type="id"/>
     <item name="textinput_counter" type="id"/>
     <item name="textinput_error" type="id"/>
