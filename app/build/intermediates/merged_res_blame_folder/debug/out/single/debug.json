@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/layout_dialog_loading.xml.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/xml/network_security_config.xml"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]

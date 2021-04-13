@@ -1,0 +1,34 @@
+com/test/moviehub/di/DataModule_ProvideRemoteDataSourceFactory.java
+ com.test.moviehub.di.DataModule_ProvideRemoteDataSourceFactory
+com/test/moviehub/data/remote/RemoteDataSourceImpl_Factory.java
+ com.test.moviehub.data.remote.RemoteDataSourceImpl_Factory
+com/test/moviehub/BuildConfig.java
+ com.test.moviehub.BuildConfig
+com/test/moviehub/di/NetworkModule_ProvideHttpLoggingInterceptorFactory.java
+ com.test.moviehub.di.NetworkModule_ProvideHttpLoggingInterceptorFactory
+ com.test.moviehub.di.NetworkModule_ProvideHttpLoggingInterceptorFactory$InstanceHolder
+com/test/moviehub/data/RepositoryImpl_Factory.java
+ com.test.moviehub.data.RepositoryImpl_Factory
+com/test/moviehub/di/DataModule_ProvideRepositoryFactory.java
+ com.test.moviehub.di.DataModule_ProvideRepositoryFactory
+com/test/moviehub/di/DataModule_ProvideErrorHandlerFactory.java
+ com.test.moviehub.di.DataModule_ProvideErrorHandlerFactory
+ com.test.moviehub.di.DataModule_ProvideErrorHandlerFactory$InstanceHolder
+com/test/moviehub/data/remote/connection/AuthTokenInterceptor_Factory.java
+ com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory
+ com.test.moviehub.data.remote.connection.AuthTokenInterceptor_Factory$InstanceHolder
+com/test/moviehub/component/dialogs/LoadingDialog_Factory.java
+ com.test.moviehub.component.dialogs.LoadingDialog_Factory
+com/test/moviehub/di/NetworkModule_ProvideGsonFactoryFactory.java
+ com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory
+ com.test.moviehub.di.NetworkModule_ProvideGsonFactoryFactory$InstanceHolder
+com/test/moviehub/di/NetworkModule_ProvidesOkHttpClientFactory.java
+ com.test.moviehub.di.NetworkModule_ProvidesOkHttpClientFactory
+hilt_aggregated_deps/com_test_moviehub_di_NetworkModuleModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_di_NetworkModuleModuleDeps
+com/test/moviehub/utils/NetworkConnection_Factory.java
+ com.test.moviehub.utils.NetworkConnection_Factory
+com/test/moviehub/di/NetworkModule_ProvideStickersServiceFactory.java
+ com.test.moviehub.di.NetworkModule_ProvideStickersServiceFactory
+hilt_aggregated_deps/com_test_moviehub_di_DataModuleModuleDeps.java
+ hilt_aggregated_deps.com_test_moviehub_di_DataModuleModuleDeps

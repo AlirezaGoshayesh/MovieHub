@@ -20,6 +20,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         minSdkVersion appMinSdkVersion
@@ -45,6 +49,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
     //glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
@@ -72,4 +77,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+
+    //paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }
