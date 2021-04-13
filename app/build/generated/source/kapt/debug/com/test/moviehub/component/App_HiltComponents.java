@@ -2,6 +2,7 @@ package com.test.moviehub.component;
 
 import androidx.hilt.lifecycle.ViewModelFactoryModules;
 import com.test.moviehub.component.activities.MainActivity_GeneratedInjector;
+import com.test.moviehub.component.fragments.SearchFragment_GeneratedInjector;
 import com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules;
 import com.test.moviehub.di.DataModule;
 import com.test.moviehub.di.NetworkModule;
@@ -213,7 +214,8 @@ public final class App_HiltComponents {
       }
   )
   @FragmentScoped
-  public abstract static class FragmentC implements FragmentComponent,
+  public abstract static class FragmentC implements SearchFragment_GeneratedInjector,
+      FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,
       GeneratedComponent {

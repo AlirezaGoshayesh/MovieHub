@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MovieHub</string>
     <string name="base_url">https://api.themoviedb.org/3/</string>
+    <string name="image_base_url">https://image.tmdb.org/t/p/w500</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="searchFragment">Search Fragment</string>
 </resources>

@@ -12,6 +12,9 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import com.test.moviehub.component.activities.MainActivity;
+import com.test.moviehub.component.adapters.SearchResultsAdapter;
+import com.test.moviehub.component.fragments.SearchFragment;
+import com.test.moviehub.component.fragments.SearchFragment_MembersInjector;
 import com.test.moviehub.component.viewModels.SearchMoviesVM;
 import com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules_KeyModule_ProvideFactory;
 import com.test.moviehub.data.remote.RemoteDataSourceImpl;
@@ -348,6 +351,11 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         }
 
         @Override
+        public void injectSearchFragment(SearchFragment searchFragment) {
+          injectSearchFragment2(searchFragment);
+        }
+
+        @Override
         public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
           return DefaultViewModelFactories_InternalFactoryFactory_Factory.newInstance(ApplicationContextModule_ProvideApplicationFactory.provideApplication(DaggerApp_HiltComponents_SingletonC.this.applicationContextModule), ActivityCImpl.this.keySetSetOfString(), new ViewModelCBuilder(), ActivityCImpl.this.defaultActivityViewModelFactorySetOfViewModelProviderFactory(), defaultFragmentViewModelFactorySetOfViewModelProviderFactory());
         }
@@ -355,6 +363,11 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         @Override
         public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
           return new ViewWithFragmentCBuilder();
+        }
+
+        private SearchFragment injectSearchFragment2(SearchFragment instance) {
+          SearchFragment_MembersInjector.injectSearchResultsAdapter(instance, new SearchResultsAdapter());
+          return instance;
         }
 
         private final class ViewWithFragmentCBuilder implements App_HiltComponents.ViewWithFragmentC.Builder {

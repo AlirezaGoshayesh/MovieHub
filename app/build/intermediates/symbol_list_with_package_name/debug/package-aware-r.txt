@@ -1204,6 +1204,7 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color tooltip_background_dark
 color tooltip_background_light
+color trans_black
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -1350,6 +1351,7 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen fading_edge_length
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -1363,6 +1365,13 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen margin_from_tray_to_name
+dimen margin_large
+dimen margin_medium
+dimen margin_small
+dimen margin_x_large
+dimen margin_xx_large
+dimen margin_xxx_large
 dimen material_clock_display_padding
 dimen material_clock_face_margin_top
 dimen material_clock_hand_center_dot_radius
@@ -1590,11 +1599,22 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen preview_side_margin
+dimen sticker_pack_details_image_padding
+dimen sticker_pack_details_image_size
+dimen sticker_pack_list_item_preview_image_padding
+dimen sticker_pack_list_item_preview_image_size
+dimen sticker_pack_list_item_row_dot_horizontal_padding
 dimen subtitle_corner_radius
 dimen subtitle_outline_width
 dimen subtitle_shadow_offset
 dimen subtitle_shadow_radius
 dimen test_mtrl_calendar_day_cornerSize
+dimen text_large
+dimen text_medium
+dimen text_small
+dimen text_x_large
+dimen text_xx_large
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -1913,6 +1933,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id fragment_main
 id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
@@ -1935,6 +1956,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id img
 id info
 id invisible
 id inward
@@ -1954,6 +1976,7 @@ id linear
 id listMode
 id list_item
 id lottie_layer_name
+id main_navigation
 id masked
 id material_clock_display
 id material_clock_face
@@ -2009,6 +2032,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id navHostFragment
 id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_header_container
@@ -2112,6 +2136,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id sv
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2258,6 +2283,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_loading
+layout fragment_search
 layout item_moview
 layout material_chip_input_combo
 layout material_clock_display
@@ -2335,6 +2361,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 mipmap ic_launcher
+navigation nav_main
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2377,8 +2404,10 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string image_base_url
 string item_view_role_description
 string material_clock_display_divider
 string material_clock_toggle_content_description
@@ -2437,6 +2466,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string searchFragment
 string search_menu_title
 string status_bar_notification_info_overflow
 style AlertDialog_AppCompat

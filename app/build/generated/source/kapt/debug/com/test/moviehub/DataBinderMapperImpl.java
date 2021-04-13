@@ -6,6 +6,10 @@ import android.view.View;
 import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
+import com.test.moviehub.databinding.ActivityMainBindingImpl;
+import com.test.moviehub.databinding.FragmentSearchBindingImpl;
+import com.test.moviehub.databinding.ItemMoviewBindingImpl;
+import java.lang.IllegalArgumentException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -16,7 +20,19 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(0);
+  private static final int LAYOUT_ACTIVITYMAIN = 1;
+
+  private static final int LAYOUT_FRAGMENTSEARCH = 2;
+
+  private static final int LAYOUT_ITEMMOVIEW = 3;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
+
+  static {
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.fragment_search, LAYOUT_FRAGMENTSEARCH);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.item_moview, LAYOUT_ITEMMOVIEW);
+  }
 
   @Override
   public ViewDataBinding getDataBinder(DataBindingComponent component, View view, int layoutId) {
@@ -25,6 +41,26 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       final Object tag = view.getTag();
       if(tag == null) {
         throw new RuntimeException("view must have a tag");
+      }
+      switch(localizedLayoutId) {
+        case  LAYOUT_ACTIVITYMAIN: {
+          if ("layout/activity_main_0".equals(tag)) {
+            return new ActivityMainBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_main is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTSEARCH: {
+          if ("layout/fragment_search_0".equals(tag)) {
+            return new FragmentSearchBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_search is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ITEMMOVIEW: {
+          if ("layout/item_moview_0".equals(tag)) {
+            return new ItemMoviewBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for item_moview is invalid. Received: " + tag);
+        }
       }
     }
     return null;
@@ -70,14 +106,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(1);
+    static final SparseArray<String> sKeys = new SparseArray<String>(2);
 
     static {
       sKeys.put(0, "_all");
+      sKeys.put(1, "movie");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(0);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
+
+    static {
+      sKeys.put("layout/activity_main_0", com.test.moviehub.R.layout.activity_main);
+      sKeys.put("layout/fragment_search_0", com.test.moviehub.R.layout.fragment_search);
+      sKeys.put("layout/item_moview_0", com.test.moviehub.R.layout.item_moview);
+    }
   }
 }
