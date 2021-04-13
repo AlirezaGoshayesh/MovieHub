@@ -1,4 +1,4 @@
-package com.vada.parents.domain.base
+package com.test.moviehub.domain.base
 
 import com.test.moviehub.domain.exceptions.ErrorModel
 

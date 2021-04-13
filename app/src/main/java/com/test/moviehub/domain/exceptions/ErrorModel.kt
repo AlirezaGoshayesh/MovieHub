@@ -1,13 +1,13 @@
 package com.test.moviehub.domain.exceptions
 
-private const val NO_CONNECTION_ERROR_MESSAGE = "اینترنت را بررسی کنید!"
-private const val BAD_RESPONSE_ERROR_MESSAGE = "خطا در پاسخ!"
-private const val TIME_OUT_ERROR_MESSAGE = "نتیجه ناموفق!"
-private const val EMPTY_RESPONSE_ERROR_MESSAGE = "بدون نتیجه!"
-private const val NOT_DEFINED_ERROR_MESSAGE = "نتیجه نامشخص!"
-private const val UNAUTHORIZED_ERROR_MESSAGE = "دسترسی شما مسدود شده است، دوباره وارد برنامه شوید!"
-private const val CANCELED_BY_USER = "لغو توسط کاربر!"
-private const val TOO_MANY_ATTEMPTS = "تعداد درخواست بالا! چند ثانیه دیگر تلاش کنید"
+private const val NO_CONNECTION_ERROR_MESSAGE = "NO_CONNECTION_ERROR_MESSAGE"
+private const val BAD_RESPONSE_ERROR_MESSAGE = "BAD_RESPONSE_ERROR_MESSAGE"
+private const val TIME_OUT_ERROR_MESSAGE = "TIME_OUT_ERROR_MESSAGE"
+private const val EMPTY_RESPONSE_ERROR_MESSAGE = "EMPTY_RESPONSE_ERROR_MESSAGE"
+private const val NOT_DEFINED_ERROR_MESSAGE = "NOT_DEFINED_ERROR_MESSAGE"
+private const val UNAUTHORIZED_ERROR_MESSAGE = "UNAUTHORIZED_ERROR_MESSAGE"
+private const val CANCELED_BY_USER = "CANCELED_BY_USER"
+private const val TOO_MANY_ATTEMPTS = "TOO_MANY_ATTEMPTS"
 
 data class ErrorModel(
     val message: String?,
