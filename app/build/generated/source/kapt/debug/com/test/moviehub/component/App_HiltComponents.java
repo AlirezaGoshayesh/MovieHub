@@ -2,11 +2,12 @@ package com.test.moviehub.component;
 
 import androidx.hilt.lifecycle.ViewModelFactoryModules;
 import com.test.moviehub.component.activities.MainActivity_GeneratedInjector;
+import com.test.moviehub.component.fragments.DetailFragment_GeneratedInjector;
 import com.test.moviehub.component.fragments.SearchFragment_GeneratedInjector;
-import com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules;
+import com.test.moviehub.component.viewModels.GetDetailsVM_HiltModules;
+import com.test.moviehub.component.viewModels.SearchFragmentVM_HiltModules;
 import com.test.moviehub.di.DataModule;
 import com.test.moviehub.di.NetworkModule;
-import com.vada.parents.component.viewModels.GetDetailsVM_HiltModules;
 import dagger.Binds;
 import dagger.Component;
 import dagger.Module;
@@ -148,7 +149,7 @@ public final class App_HiltComponents {
           ViewModelCBuilderModule.class,
           GetDetailsVM_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
-          SearchMoviesVM_HiltModules.KeyModule.class
+          SearchFragmentVM_HiltModules.KeyModule.class
       }
   )
   @ActivityRetainedScoped
@@ -186,7 +187,7 @@ public final class App_HiltComponents {
       modules = {
           GetDetailsVM_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
-          SearchMoviesVM_HiltModules.BindsModule.class
+          SearchFragmentVM_HiltModules.BindsModule.class
       }
   )
   @ViewModelScoped
@@ -214,7 +215,8 @@ public final class App_HiltComponents {
       }
   )
   @FragmentScoped
-  public abstract static class FragmentC implements SearchFragment_GeneratedInjector,
+  public abstract static class FragmentC implements DetailFragment_GeneratedInjector,
+      SearchFragment_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,

@@ -2,6 +2,7 @@ package com.test.moviehub.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetDetailsResponse(
     @SerializedName("adult")
@@ -25,7 +26,7 @@ data class GetDetailsResponse(
     @SerializedName("original_title")
     val originalTitle: String,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String?,
     @SerializedName("popularity")
     val popularity: Double,
     @SerializedName("poster_path")
@@ -54,4 +55,21 @@ data class GetDetailsResponse(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+) : Serializable {
+
+    fun getGenresString(): String {
+        var mGenres = ""
+        val genresMap = genres.map { it.name }
+        genresMap.forEach {
+            mGenres += "$it - "
+        }
+        return mGenres.subSequence(0, mGenres.length - 2).toString()
+    }
+
+    fun getSummary(): String {
+        return if (overview.isNullOrEmpty())
+            "No summary available"
+        else
+            overview
+    }
+}

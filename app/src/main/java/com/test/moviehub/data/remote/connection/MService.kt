@@ -27,7 +27,7 @@ interface MService {
         @Path(
             value = "movie_id",
             encoded = true
-        ) movieId: String
+        ) movieId: Int
     ): GetDetailsResponse
 
 }

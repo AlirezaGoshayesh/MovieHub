@@ -1,1 +1,1 @@
-[{"navFile":"src/main/res/navigation/nav_main.xml","javaFiles":[]}]
+[{"navFile":"src/main/res/navigation/nav_main.xml","javaFiles":["com.test.moviehub.component.fragments.SearchFragmentDirections","com.test.moviehub.component.fragments.DetailFragmentArgs"]}]

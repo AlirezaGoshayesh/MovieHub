@@ -8,8 +8,8 @@ import javax.inject.Inject
 class GetDetails @Inject constructor(
     private val repository: Repository,
     errorHandler: IErrorHandler
-) : UseCase<GetDetailsResponse, String>(errorHandler) {
-    override suspend fun run(params: String?): GetDetailsResponse {
+) : UseCase<GetDetailsResponse, Int>(errorHandler) {
+    override suspend fun run(params: Int?): GetDetailsResponse {
         return repository.getDetails(params!!)
     }
 }

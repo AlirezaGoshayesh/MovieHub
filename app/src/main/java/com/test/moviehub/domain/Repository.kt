@@ -9,6 +9,8 @@ interface Repository {
 
     suspend fun searchMovies(searchKeyword: String): Flow<PagingData<MovieResult>>
 
-    suspend fun getDetails(movieId: String): GetDetailsResponse
+    suspend fun getPopularMovies(): Flow<PagingData<MovieResult>>
+
+    suspend fun getDetails(movieId: Int): GetDetailsResponse
 
 }

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail.xml",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/fragment_detail.xml"
+    },
+    {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_moview.xml",
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/item_moview.xml"
     },

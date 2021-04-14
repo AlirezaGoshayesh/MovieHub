@@ -1720,11 +1720,11 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
-drawable ic_movie
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_place
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1819,6 +1819,7 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_fragment_main_to_fragment_detail
 id action_image
 id action_menu_divider
 id action_menu_presenter
@@ -1934,6 +1935,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id fragment_detail
 id fragment_main
 id ghost_view
 id ghost_view_holder
@@ -2189,7 +2191,10 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txt_genres
 id txt_no_data
+id txt_summary
+id txt_summary_title
 id txt_top
 id unchecked
 id uniform
@@ -2286,6 +2291,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_loading
+layout fragment_detail
 layout fragment_search
 layout item_moview
 layout material_chip_input_combo
@@ -2464,6 +2470,7 @@ string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string no_results
+string overview
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

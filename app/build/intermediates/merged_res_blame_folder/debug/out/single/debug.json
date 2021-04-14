@@ -12,6 +12,10 @@
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/drawable_ic_place.png.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/drawable/ic_place.png"
+    },
+    {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
@@ -32,16 +36,16 @@
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/fragment_search.xml"
     },
     {
+        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/layout_fragment_detail.xml.flat",
+        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/fragment_detail.xml"
+    },
+    {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/layout_item_moview.xml.flat",
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/layout/item_moview.xml"
     },
     {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",
         "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/xml/network_security_config.xml"
-    },
-    {
-        "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/drawable_ic_movie.png.flat",
-        "source": "/Users/alireza/Documents/Android Projects/MovieHub/app/src/main/res/drawable/ic_movie.png"
     },
     {
         "merged": "/Users/alireza/Documents/Android Projects/MovieHub/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",

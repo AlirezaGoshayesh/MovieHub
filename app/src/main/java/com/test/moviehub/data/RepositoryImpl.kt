@@ -15,7 +15,11 @@ class RepositoryImpl @Inject constructor(
         return remoteDataSource.searchMovies(searchKeyword)
     }
 
-    override suspend fun getDetails(movieId: String): GetDetailsResponse {
+    override suspend fun getPopularMovies(): Flow<PagingData<MovieResult>> {
+        return remoteDataSource.getPopularMovies()
+    }
+
+    override suspend fun getDetails(movieId: Int): GetDetailsResponse {
         return remoteDataSource.getDetails(movieId)
     }
 

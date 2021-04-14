@@ -9,6 +9,32 @@
         android:id="@+id/fragment_main"
         android:name="com.test.moviehub.component.fragments.SearchFragment"
         android:label="@string/searchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_detail"
+            app:destination="@id/fragment_detail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detail"
+        android:name="com.test.moviehub.component.fragments.DetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="movie"
+            app:argType="com.test.moviehub.data.model.GetDetailsResponse"
+            app:nullable="false" />
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

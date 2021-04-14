@@ -1,4 +1,4 @@
-package com.vada.parents.component.viewModels
+package com.test.moviehub.component.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,18 +17,18 @@ class GetDetailsVM @Inject constructor(
     private val getDetails: GetDetails
 ) : ViewModel() {
 
-    private val _children by lazy { MutableLiveData<GetDetailsResponse>() }
-    val children: LiveData<GetDetailsResponse> get() = _children
+    private val _movie by lazy { MutableLiveData<GetDetailsResponse>() }
+    val movie: LiveData<GetDetailsResponse> get() = _movie
 
 
     private val _error by lazy { MutableLiveData<ErrorModel>() }
     val error: LiveData<ErrorModel> get() = _error
 
-    fun getDetails() {
+    fun getDetails(id: Int) {
         viewModelScope.launch {
-            getDetails.call("13545", onResult = object : UseCaseCallback<GetDetailsResponse> {
+            getDetails.call(id, onResult = object : UseCaseCallback<GetDetailsResponse> {
                 override fun onSuccess(result: GetDetailsResponse) {
-                    _children.value = result
+                    _movie.value = result
                 }
 
                 override fun onError(errorModel: ErrorModel?) {

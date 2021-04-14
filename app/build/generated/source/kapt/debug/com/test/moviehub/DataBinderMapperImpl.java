@@ -7,6 +7,7 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.test.moviehub.databinding.ActivityMainBindingImpl;
+import com.test.moviehub.databinding.FragmentDetailBindingImpl;
 import com.test.moviehub.databinding.FragmentSearchBindingImpl;
 import com.test.moviehub.databinding.ItemMoviewBindingImpl;
 import java.lang.IllegalArgumentException;
@@ -22,14 +23,17 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYMAIN = 1;
 
-  private static final int LAYOUT_FRAGMENTSEARCH = 2;
+  private static final int LAYOUT_FRAGMENTDETAIL = 2;
 
-  private static final int LAYOUT_ITEMMOVIEW = 3;
+  private static final int LAYOUT_FRAGMENTSEARCH = 3;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
+  private static final int LAYOUT_ITEMMOVIEW = 4;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(4);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.fragment_detail, LAYOUT_FRAGMENTDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.fragment_search, LAYOUT_FRAGMENTSEARCH);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.test.moviehub.R.layout.item_moview, LAYOUT_ITEMMOVIEW);
   }
@@ -48,6 +52,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityMainBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_main is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTDETAIL: {
+          if ("layout/fragment_detail_0".equals(tag)) {
+            return new FragmentDetailBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_detail is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTSEARCH: {
           if ("layout/fragment_search_0".equals(tag)) {
@@ -116,10 +126,11 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(4);
 
     static {
       sKeys.put("layout/activity_main_0", com.test.moviehub.R.layout.activity_main);
+      sKeys.put("layout/fragment_detail_0", com.test.moviehub.R.layout.fragment_detail);
       sKeys.put("layout/fragment_search_0", com.test.moviehub.R.layout.fragment_search);
       sKeys.put("layout/item_moview_0", com.test.moviehub.R.layout.item_moview);
     }

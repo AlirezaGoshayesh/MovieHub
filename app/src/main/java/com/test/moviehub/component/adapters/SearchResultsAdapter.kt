@@ -19,18 +19,28 @@ import com.test.moviehub.databinding.ItemMoviewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.item_moview.view.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class SearchResultsAdapter @Inject constructor() :
     PagingDataAdapter<MovieResult, SearchResultsAdapter.MovieResultViewHolder>(
         SearchResultsComparator
     ) {
 
-    private lateinit var context: Context
+    private var onClickListener: ItemListOnClickListener? = null
+
+    interface ItemListOnClickListener {
+        fun onClick(id: Int)
+    }
+
+    fun setOnClickListener(onClickListener: ItemListOnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MovieResultViewHolder {
-        context = parent.context
         return MovieResultViewHolder(
             ItemMoviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
@@ -45,8 +55,13 @@ class SearchResultsAdapter @Inject constructor() :
     inner class MovieResultViewHolder(private val binding: ItemMoviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bindMovie(item: MovieResult) = with(binding) {
-            binding.movie = item
+        fun bindMovie(item: MovieResult) {
+            binding.apply {
+                movie = item
+                root.setOnClickListener {
+                    onClickListener?.onClick(id = item.id)
+                }
+            }
         }
     }
 
@@ -65,6 +80,7 @@ class SearchResultsAdapter @Inject constructor() :
 fun setImage(image: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(image.context).load(image.context.getString(R.string.image_base_url) + imageUrl)
+            .error(R.drawable.ic_place)
             .into(image)
     }
 }

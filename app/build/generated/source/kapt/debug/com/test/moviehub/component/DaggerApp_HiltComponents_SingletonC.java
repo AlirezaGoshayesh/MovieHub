@@ -14,10 +14,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.test.moviehub.component.activities.MainActivity;
 import com.test.moviehub.component.adapters.SearchResultsAdapter;
 import com.test.moviehub.component.dialogs.LoadingDialog;
+import com.test.moviehub.component.fragments.DetailFragment;
 import com.test.moviehub.component.fragments.SearchFragment;
 import com.test.moviehub.component.fragments.SearchFragment_MembersInjector;
-import com.test.moviehub.component.viewModels.SearchMoviesVM;
-import com.test.moviehub.component.viewModels.SearchMoviesVM_HiltModules_KeyModule_ProvideFactory;
+import com.test.moviehub.component.viewModels.GetDetailsVM;
+import com.test.moviehub.component.viewModels.GetDetailsVM_HiltModules_KeyModule_ProvideFactory;
+import com.test.moviehub.component.viewModels.SearchFragmentVM;
+import com.test.moviehub.component.viewModels.SearchFragmentVM_HiltModules_KeyModule_ProvideFactory;
 import com.test.moviehub.data.remote.RemoteDataSourceImpl;
 import com.test.moviehub.data.remote.connection.AuthTokenInterceptor;
 import com.test.moviehub.data.remote.connection.MService;
@@ -30,11 +33,10 @@ import com.test.moviehub.di.NetworkModule_ProvideHttpLoggingInterceptorFactory;
 import com.test.moviehub.di.NetworkModule_ProvideStickersServiceFactory;
 import com.test.moviehub.di.NetworkModule_ProvidesOkHttpClientFactory;
 import com.test.moviehub.domain.GetDetails;
+import com.test.moviehub.domain.GetPopularMovies;
 import com.test.moviehub.domain.Repository;
 import com.test.moviehub.domain.SearchMovies;
 import com.test.moviehub.domain.exceptions.IErrorHandler;
-import com.vada.parents.component.viewModels.GetDetailsVM;
-import com.vada.parents.component.viewModels.GetDetailsVM_HiltModules_KeyModule_ProvideFactory;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
 import dagger.hilt.android.internal.builders.ActivityRetainedComponentBuilder;
@@ -68,6 +70,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponents.SingletonC {
   private final ApplicationContextModule applicationContextModule;
 
+  private volatile Object searchResultsAdapter = new MemoizedSentinel();
+
   private volatile Object httpLoggingInterceptor = new MemoizedSentinel();
 
   private volatile Object okHttpClient = new MemoizedSentinel();
@@ -87,6 +91,20 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
 
   public static Builder builder() {
     return new Builder();
+  }
+
+  private SearchResultsAdapter searchResultsAdapter() {
+    Object local = searchResultsAdapter;
+    if (local instanceof MemoizedSentinel) {
+      synchronized (local) {
+        local = searchResultsAdapter;
+        if (local instanceof MemoizedSentinel) {
+          local = new SearchResultsAdapter();
+          searchResultsAdapter = DoubleCheck.reentrantCheck(searchResultsAdapter, local);
+        }
+      }
+    }
+    return (SearchResultsAdapter) local;
   }
 
   private HttpLoggingInterceptor httpLoggingInterceptor() {
@@ -290,7 +308,7 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
       }
 
       private Set<String> keySetSetOfString() {
-        return SetBuilder.<String>newSetBuilder(2).add(GetDetailsVM_HiltModules_KeyModule_ProvideFactory.provide()).add(SearchMoviesVM_HiltModules_KeyModule_ProvideFactory.provide()).build();
+        return SetBuilder.<String>newSetBuilder(2).add(GetDetailsVM_HiltModules_KeyModule_ProvideFactory.provide()).add(SearchFragmentVM_HiltModules_KeyModule_ProvideFactory.provide()).build();
       }
 
       private ViewModelProvider.Factory provideFactory() {
@@ -368,6 +386,10 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         }
 
         @Override
+        public void injectDetailFragment(DetailFragment detailFragment) {
+        }
+
+        @Override
         public void injectSearchFragment(SearchFragment searchFragment) {
           injectSearchFragment2(searchFragment);
         }
@@ -384,7 +406,7 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
 
         private SearchFragment injectSearchFragment2(SearchFragment instance) {
           SearchFragment_MembersInjector.injectLoadingDialog(instance, ActivityCImpl.this.loadingDialog());
-          SearchFragment_MembersInjector.injectSearchResultsAdapter(instance, new SearchResultsAdapter());
+          SearchFragment_MembersInjector.injectSearchResultsAdapter(instance, DaggerApp_HiltComponents_SingletonC.this.searchResultsAdapter());
           return instance;
         }
 
@@ -453,7 +475,7 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
     private final class ViewModelCImpl extends App_HiltComponents.ViewModelC {
       private volatile Provider<GetDetailsVM> getDetailsVMProvider;
 
-      private volatile Provider<SearchMoviesVM> searchMoviesVMProvider;
+      private volatile Provider<SearchFragmentVM> searchFragmentVMProvider;
 
       private ViewModelCImpl(SavedStateHandle savedStateHandle) {
 
@@ -480,22 +502,26 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         return new SearchMovies(DaggerApp_HiltComponents_SingletonC.this.repository());
       }
 
-      private SearchMoviesVM searchMoviesVM() {
-        return new SearchMoviesVM(searchMovies());
+      private GetPopularMovies getPopularMovies() {
+        return new GetPopularMovies(DaggerApp_HiltComponents_SingletonC.this.repository());
       }
 
-      private Provider<SearchMoviesVM> searchMoviesVMProvider() {
-        Object local = searchMoviesVMProvider;
+      private SearchFragmentVM searchFragmentVM() {
+        return new SearchFragmentVM(searchMovies(), getPopularMovies());
+      }
+
+      private Provider<SearchFragmentVM> searchFragmentVMProvider() {
+        Object local = searchFragmentVMProvider;
         if (local == null) {
           local = new SwitchingProvider<>(1);
-          searchMoviesVMProvider = (Provider<SearchMoviesVM>) local;
+          searchFragmentVMProvider = (Provider<SearchFragmentVM>) local;
         }
-        return (Provider<SearchMoviesVM>) local;
+        return (Provider<SearchFragmentVM>) local;
       }
 
       @Override
       public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-        return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(2).put("com.vada.parents.component.viewModels.GetDetailsVM", (Provider) getDetailsVMProvider()).put("com.test.moviehub.component.viewModels.SearchMoviesVM", (Provider) searchMoviesVMProvider()).build();
+        return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(2).put("com.test.moviehub.component.viewModels.GetDetailsVM", (Provider) getDetailsVMProvider()).put("com.test.moviehub.component.viewModels.SearchFragmentVM", (Provider) searchFragmentVMProvider()).build();
       }
 
       private final class SwitchingProvider<T> implements Provider<T> {
@@ -509,11 +535,11 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         @Override
         public T get() {
           switch (id) {
-            case 0: // com.vada.parents.component.viewModels.GetDetailsVM 
+            case 0: // com.test.moviehub.component.viewModels.GetDetailsVM 
             return (T) ViewModelCImpl.this.getDetailsVM();
 
-            case 1: // com.test.moviehub.component.viewModels.SearchMoviesVM 
-            return (T) ViewModelCImpl.this.searchMoviesVM();
+            case 1: // com.test.moviehub.component.viewModels.SearchFragmentVM 
+            return (T) ViewModelCImpl.this.searchFragmentVM();
 
             default: throw new AssertionError(id);
           }

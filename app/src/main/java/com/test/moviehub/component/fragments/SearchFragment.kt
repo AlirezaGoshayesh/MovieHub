@@ -10,25 +10,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.test.moviehub.R
 import com.test.moviehub.component.adapters.SearchResultsAdapter
 import com.test.moviehub.component.dialogs.LoadingDialog
-import com.test.moviehub.component.viewModels.SearchMoviesVM
+import com.test.moviehub.component.viewModels.SearchFragmentVM
 import com.test.moviehub.databinding.FragmentSearchBinding
+import com.test.moviehub.component.viewModels.GetDetailsVM
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_moview.view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTextListener,
-        (CombinedLoadStates) -> Unit {
+        (CombinedLoadStates) -> Unit, SearchResultsAdapter.ItemListOnClickListener {
 
     lateinit var binding: FragmentSearchBinding
 
@@ -37,8 +37,10 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
 
     @Inject
     lateinit var searchResultsAdapter: SearchResultsAdapter
-    private val searchMoviesVM: SearchMoviesVM by viewModels()
-    private var searchJob: Job? = null
+    private val searchFragmentVM: SearchFragmentVM by viewModels()
+    private val getDetailsVM: GetDetailsVM by viewModels()
+    private var mJob: Job? = null
+    private var isClicked = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +55,26 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         parseView()
+        registerObserver()
+    }
+
+    private fun registerObserver() {
+        getDetailsVM.movie.observe(viewLifecycleOwner, {
+            if (isClicked) {
+                isClicked = false
+                loadingDialog.hide()
+                findNavController().navigate(
+                    SearchFragmentDirections.actionFragmentMainToFragmentDetail(
+                        it, it.title
+                    )
+                )
+            }
+        })
+        getDetailsVM.error.observe(viewLifecycleOwner, {
+            isClicked = false
+            loadingDialog.hide()
+            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun parseView() {
@@ -62,20 +84,21 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
             adapter = searchResultsAdapter
         }
         searchResultsAdapter.addLoadStateListener(this)
+        searchResultsAdapter.setOnClickListener(this)
         search()
         binding.sv.setOnQueryTextListener(this)
     }
 
     private fun search(query: String? = null) {
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
+        mJob?.cancel()
+        mJob = lifecycleScope.launch {
             if (query == null)
-                searchMoviesVM.searchMovies("jack").collectLatest {
+                searchFragmentVM.getPopularMovies().collectLatest {
                     binding.textTop = getString(R.string.popular)
                     searchResultsAdapter.submitData(it)
                 }
             else
-                searchMoviesVM.searchMovies(query).collectLatest {
+                searchFragmentVM.searchMovies(query).collectLatest {
                     binding.textTop = "Movies including $query"
                     searchResultsAdapter.submitData(it)
                 }
@@ -119,5 +142,11 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
                 Toast.makeText(requireContext(), it.error.toString(), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onClick(id: Int) {
+        isClicked = true
+        getDetailsVM.getDetails(id)
+        loadingDialog.show()
     }
 }
