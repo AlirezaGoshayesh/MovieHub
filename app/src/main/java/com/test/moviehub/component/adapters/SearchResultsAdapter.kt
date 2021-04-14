@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -64,9 +65,6 @@ class SearchResultsAdapter @Inject constructor() :
 fun setImage(image: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(image.context).load(image.context.getString(R.string.image_base_url) + imageUrl)
-            //TODO .placeholder()
             .into(image)
-    } else {
-        //TODO image.setImageDrawable(placeHolder)
     }
 }

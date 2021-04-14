@@ -1,36 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="text_top"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/black"
-        tools:context=".component.fragments.SearchFragment">
+        tools:context=".component.fragments.SearchFragment"
+        android:focusableInTouchMode="true">
 
         <SearchView
             android:id="@+id/sv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:queryHint="Search your movie here"
-            android:iconifiedByDefault="false"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="@dimen/margin_xx_large"
-            android:background="@color/white" />
+            android:background="@color/yellow_light"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search your movie here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xx_large"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@{text_top}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv" />
+
+        <TextView
+            android:id="@+id/txt_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_results"
+            android:textColor="@color/yellow_light"
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/rv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="@id/sv"
-            app:layout_constraintEnd_toEndOf="@id/sv"
-            app:layout_constraintTop_toBottomOf="@id/sv"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="@dimen/margin_xx_large"
-            android:layout_marginBottom="@dimen/margin_xx_large"/>
+            android:layout_marginBottom="@dimen/margin_xx_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/sv"
+            app:layout_constraintStart_toStartOf="@id/sv"
+            app:layout_constraintTop_toBottomOf="@id/txt_top" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

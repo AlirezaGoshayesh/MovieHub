@@ -1182,9 +1182,6 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
-color purple_200
-color purple_500
-color purple_700
 color radiobutton_themeable_attribute_color
 color ripple_material_dark
 color ripple_material_light
@@ -1206,6 +1203,9 @@ color tooltip_background_dark
 color tooltip_background_light
 color trans_black
 color white
+color yellow_dark
+color yellow_light
+color yellow_mid
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1720,6 +1720,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
+drawable ic_movie
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -2188,6 +2189,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txt_no_data
+id txt_top
 id unchecked
 id uniform
 id unlabeled
@@ -2404,7 +2407,6 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
-string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string image_base_url
@@ -2461,11 +2463,13 @@ string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string no_results
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string popular
 string searchFragment
 string search_menu_title
 string status_bar_notification_info_overflow

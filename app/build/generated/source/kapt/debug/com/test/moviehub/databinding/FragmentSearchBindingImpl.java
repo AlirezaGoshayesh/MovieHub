@@ -14,8 +14,9 @@ public class FragmentSearchBindingImpl extends FragmentSearchBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.sv, 1);
-        sViewsWithIds.put(R.id.rv, 2);
+        sViewsWithIds.put(R.id.sv, 2);
+        sViewsWithIds.put(R.id.txt_no_data, 3);
+        sViewsWithIds.put(R.id.rv, 4);
     }
     // views
     @NonNull
@@ -26,15 +27,18 @@ public class FragmentSearchBindingImpl extends FragmentSearchBinding  {
     // Inverse Binding Event Handlers
 
     public FragmentSearchBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
     }
     private FragmentSearchBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (androidx.recyclerview.widget.RecyclerView) bindings[2]
-            , (android.widget.SearchView) bindings[1]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[4]
+            , (android.widget.SearchView) bindings[2]
+            , (android.widget.TextView) bindings[3]
+            , (android.widget.TextView) bindings[1]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
+        this.txtTop.setTag(null);
         setRootTag(root);
         // listeners
         invalidateAll();
@@ -43,7 +47,7 @@ public class FragmentSearchBindingImpl extends FragmentSearchBinding  {
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x1L;
+                mDirtyFlags = 0x2L;
         }
         requestRebind();
     }
@@ -61,7 +65,22 @@ public class FragmentSearchBindingImpl extends FragmentSearchBinding  {
     @Override
     public boolean setVariable(int variableId, @Nullable Object variable)  {
         boolean variableSet = true;
+        if (BR.text_top == variableId) {
+            setTextTop((java.lang.String) variable);
+        }
+        else {
+            variableSet = false;
+        }
             return variableSet;
+    }
+
+    public void setTextTop(@Nullable java.lang.String TextTop) {
+        this.mTextTop = TextTop;
+        synchronized(this) {
+            mDirtyFlags |= 0x1L;
+        }
+        notifyPropertyChanged(BR.text_top);
+        super.requestRebind();
     }
 
     @Override
@@ -78,14 +97,24 @@ public class FragmentSearchBindingImpl extends FragmentSearchBinding  {
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
+        java.lang.String textTop = mTextTop;
+
+        if ((dirtyFlags & 0x3L) != 0) {
+        }
         // batch finished
+        if ((dirtyFlags & 0x3L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.txtTop, textTop);
+        }
     }
     // Listener Stub Implementations
     // callback impls
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): null
+        flag 0 (0x1L): text_top
+        flag 1 (0x2L): null
     flag mapping end*/
     //end
 }

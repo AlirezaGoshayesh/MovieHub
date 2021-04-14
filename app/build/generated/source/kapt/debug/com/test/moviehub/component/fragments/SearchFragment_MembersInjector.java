@@ -2,6 +2,7 @@
 package com.test.moviehub.component.fragments;
 
 import com.test.moviehub.component.adapters.SearchResultsAdapter;
+import com.test.moviehub.component.dialogs.LoadingDialog;
 import dagger.MembersInjector;
 import dagger.internal.InjectedFieldSignature;
 import javax.inject.Provider;
@@ -11,21 +12,31 @@ import javax.inject.Provider;
     "rawtypes"
 })
 public final class SearchFragment_MembersInjector implements MembersInjector<SearchFragment> {
+  private final Provider<LoadingDialog> loadingDialogProvider;
+
   private final Provider<SearchResultsAdapter> searchResultsAdapterProvider;
 
-  public SearchFragment_MembersInjector(
+  public SearchFragment_MembersInjector(Provider<LoadingDialog> loadingDialogProvider,
       Provider<SearchResultsAdapter> searchResultsAdapterProvider) {
+    this.loadingDialogProvider = loadingDialogProvider;
     this.searchResultsAdapterProvider = searchResultsAdapterProvider;
   }
 
   public static MembersInjector<SearchFragment> create(
+      Provider<LoadingDialog> loadingDialogProvider,
       Provider<SearchResultsAdapter> searchResultsAdapterProvider) {
-    return new SearchFragment_MembersInjector(searchResultsAdapterProvider);
+    return new SearchFragment_MembersInjector(loadingDialogProvider, searchResultsAdapterProvider);
   }
 
   @Override
   public void injectMembers(SearchFragment instance) {
+    injectLoadingDialog(instance, loadingDialogProvider.get());
     injectSearchResultsAdapter(instance, searchResultsAdapterProvider.get());
+  }
+
+  @InjectedFieldSignature("com.test.moviehub.component.fragments.SearchFragment.loadingDialog")
+  public static void injectLoadingDialog(SearchFragment instance, LoadingDialog loadingDialog) {
+    instance.loadingDialog = loadingDialog;
   }
 
   @InjectedFieldSignature("com.test.moviehub.component.fragments.SearchFragment.searchResultsAdapter")

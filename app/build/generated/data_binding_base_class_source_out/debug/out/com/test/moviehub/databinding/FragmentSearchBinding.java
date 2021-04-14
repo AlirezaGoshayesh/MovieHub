@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,11 +23,29 @@ public abstract class FragmentSearchBinding extends ViewDataBinding {
   @NonNull
   public final SearchView sv;
 
+  @NonNull
+  public final TextView txtNoData;
+
+  @NonNull
+  public final TextView txtTop;
+
+  @Bindable
+  protected String mTextTop;
+
   protected FragmentSearchBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      RecyclerView rv, SearchView sv) {
+      RecyclerView rv, SearchView sv, TextView txtNoData, TextView txtTop) {
     super(_bindingComponent, _root, _localFieldCount);
     this.rv = rv;
     this.sv = sv;
+    this.txtNoData = txtNoData;
+    this.txtTop = txtTop;
+  }
+
+  public abstract void setTextTop(@Nullable String text_top);
+
+  @Nullable
+  public String getTextTop() {
+    return mTextTop;
   }
 
   @NonNull

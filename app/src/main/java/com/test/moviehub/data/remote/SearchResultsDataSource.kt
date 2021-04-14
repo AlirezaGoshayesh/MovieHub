@@ -11,7 +11,7 @@ class SearchResultsDataSource (private val service: MService, private val query:
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResult> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = service.searchMovies(query)
+            val response = service.searchMovies(query, nextPageNumber)
             LoadResult.Page(
                 data = response.movieResults,
                 prevKey = if (nextPageNumber > 1) nextPageNumber - 1 else null,

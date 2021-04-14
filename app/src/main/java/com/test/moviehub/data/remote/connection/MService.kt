@@ -1,7 +1,7 @@
 package com.test.moviehub.data.remote.connection
 
 import com.test.moviehub.data.model.GetDetailsResponse
-import com.test.moviehub.data.model.SearchResponse
+import com.test.moviehub.data.model.MoviesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,8 +12,14 @@ interface MService {
     @GET("search/movie")
     suspend fun searchMovies(
         @Query("query") searchKeyword: String,
-        @Query("page") page: Int = 1
-    ): SearchResponse
+        @Query("page") page: Int
+    ): MoviesResponse
+
+    //popular movies
+    @GET("movie/popular")
+    suspend fun getPopularMovies(
+        @Query("page") page: Int
+    ): MoviesResponse
 
     //get details of a movie
     @GET("movie/{movie_id}")

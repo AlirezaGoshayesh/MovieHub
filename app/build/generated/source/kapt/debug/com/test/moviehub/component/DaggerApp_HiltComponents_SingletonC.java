@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import com.test.moviehub.component.activities.MainActivity;
 import com.test.moviehub.component.adapters.SearchResultsAdapter;
+import com.test.moviehub.component.dialogs.LoadingDialog;
 import com.test.moviehub.component.fragments.SearchFragment;
 import com.test.moviehub.component.fragments.SearchFragment_MembersInjector;
 import com.test.moviehub.component.viewModels.SearchMoviesVM;
@@ -282,6 +283,8 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
     private final class ActivityCImpl extends App_HiltComponents.ActivityC {
       private final Activity activity;
 
+      private volatile Object loadingDialog = new MemoizedSentinel();
+
       private ActivityCImpl(Activity activityParam) {
         this.activity = activityParam;
       }
@@ -297,6 +300,20 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
       private Set<ViewModelProvider.Factory> defaultActivityViewModelFactorySetOfViewModelProviderFactory(
           ) {
         return Collections.<ViewModelProvider.Factory>singleton(provideFactory());
+      }
+
+      private LoadingDialog loadingDialog() {
+        Object local = loadingDialog;
+        if (local instanceof MemoizedSentinel) {
+          synchronized (local) {
+            local = loadingDialog;
+            if (local instanceof MemoizedSentinel) {
+              local = new LoadingDialog(activity);
+              loadingDialog = DoubleCheck.reentrantCheck(loadingDialog, local);
+            }
+          }
+        }
+        return (LoadingDialog) local;
       }
 
       @Override
@@ -366,6 +383,7 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
         }
 
         private SearchFragment injectSearchFragment2(SearchFragment instance) {
+          SearchFragment_MembersInjector.injectLoadingDialog(instance, ActivityCImpl.this.loadingDialog());
           SearchFragment_MembersInjector.injectSearchResultsAdapter(instance, new SearchResultsAdapter());
           return instance;
         }
