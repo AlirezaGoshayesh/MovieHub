@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieHub"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".component.activities.MainActivity">
+        <activity
+            android:name=".component.activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
