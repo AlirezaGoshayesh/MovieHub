@@ -17,10 +17,17 @@ class SearchFragmentVM @Inject constructor(
     private val getPopularMovies: GetPopularMovies
 ) : ViewModel() {
 
+    /**
+     * Called when search is performed to get the flow of paging data.
+     * @param query The movie name to request.
+     */
     suspend fun searchMovies(query: String): Flow<PagingData<MovieResult>> {
         return searchMovies.call(query).cachedIn(viewModelScope)
     }
 
+    /**
+     * Called when user first loads the app and get the flow of paging data.
+     */
     suspend fun getPopularMovies(): Flow<PagingData<MovieResult>> {
         return getPopularMovies.call().cachedIn(viewModelScope)
     }

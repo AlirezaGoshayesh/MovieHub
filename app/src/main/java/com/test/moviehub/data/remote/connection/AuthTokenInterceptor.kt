@@ -1,10 +1,14 @@
 package com.test.moviehub.data.remote.connection
 
+import android.content.Context
+import com.test.moviehub.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class AuthTokenInterceptor @Inject constructor() : Interceptor {
+/** interceptor to intercept auth in requests*/
+class AuthTokenInterceptor @Inject constructor(@ApplicationContext private val context: Context) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         proceed(
@@ -12,7 +16,7 @@ class AuthTokenInterceptor @Inject constructor() : Interceptor {
                 .newBuilder()
                 .addHeader(
                     "Authorization",
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTA4NGY4NWVhOTBiYjdjYWYwMDVmOGExZjI4NTU4YSIsInN1YiI6IjYwNzJlMTVmOGRkYzM0MDA0MGE5NTliZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IEEpO7C7vDWS3gJBOtG0hNVn502Z8WdGynwssp6gexc"
+                    context.getString(R.string.bearer_token)
                 )
                 .build()
         )

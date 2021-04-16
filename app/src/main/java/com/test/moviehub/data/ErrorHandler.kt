@@ -1,4 +1,4 @@
-package com.vada.parents.data
+package com.test.moviehub.data
 
 import com.test.moviehub.domain.exceptions.ErrorModel
 import com.test.moviehub.domain.exceptions.IErrorHandler

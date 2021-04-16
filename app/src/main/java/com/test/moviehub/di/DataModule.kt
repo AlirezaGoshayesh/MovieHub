@@ -6,7 +6,7 @@ import com.test.moviehub.data.remote.RemoteDataSourceImpl
 import com.test.moviehub.data.remote.connection.MService
 import com.test.moviehub.domain.Repository
 import com.test.moviehub.domain.exceptions.IErrorHandler
-import com.vada.parents.data.ErrorHandler
+import com.test.moviehub.data.ErrorHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

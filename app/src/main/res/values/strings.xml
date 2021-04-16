@@ -6,4 +6,5 @@
     <string name="popular">Popular Movies</string>
     <string name="no_results">No results</string>
     <string name="overview">overview</string>
+    <string name="bearer_token">Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTA4NGY4NWVhOTBiYjdjYWYwMDVmOGExZjI4NTU4YSIsInN1YiI6IjYwNzJlMTVmOGRkYzM0MDA0MGE5NTliZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IEEpO7C7vDWS3gJBOtG0hNVn502Z8WdGynwssp6gexc</string>
 </resources>

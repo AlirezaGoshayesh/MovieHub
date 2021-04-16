@@ -8,20 +8,30 @@ import retrofit2.http.Query
 
 interface MService {
 
-    //search movies
+    /**
+     * search movies.
+     * @param searchKeyword the query to perform.
+     * @param page the page number to perform.
+     */
     @GET("search/movie")
     suspend fun searchMovies(
         @Query("query") searchKeyword: String,
         @Query("page") page: Int
     ): MoviesResponse
 
-    //popular movies
+    /**
+     * popular movies.
+     * @param page the page number to perform.
+     */
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int
     ): MoviesResponse
 
-    //get details of a movie
+    /**
+     * get movie details.
+     * @param movieId the movie id to perform.
+     */
     @GET("movie/{movie_id}")
     suspend fun getDetails(
         @Path(

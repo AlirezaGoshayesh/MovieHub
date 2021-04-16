@@ -3,10 +3,9 @@ package com.test.moviehub.data.remote
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
+import com.test.moviehub.data.SearchType
 import com.test.moviehub.data.model.GetDetailsResponse
 import com.test.moviehub.data.model.MovieResult
-import com.test.moviehub.data.remote.connection.GetPopularResultsDataSource
 import com.test.moviehub.data.remote.connection.MService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -17,7 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(private val service: MService) :
         return Pager(
             config = PagingConfig(enablePlaceholders = true, pageSize = 10),
             pagingSourceFactory = {
-                SearchResultsDataSource(service, searchKeyword)
+                MoviesResultsDataSource(service, SearchType.Search, searchKeyword)
             }
         ).flow
     }
@@ -26,7 +25,7 @@ class RemoteDataSourceImpl @Inject constructor(private val service: MService) :
         return Pager(
             config = PagingConfig(enablePlaceholders = true, pageSize = 10),
             pagingSourceFactory = {
-                GetPopularResultsDataSource(service)
+                MoviesResultsDataSource(service, SearchType.Popular)
             }
         ).flow
     }

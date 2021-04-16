@@ -24,6 +24,10 @@ class GetDetailsVM @Inject constructor(
     private val _error by lazy { MutableLiveData<ErrorModel>() }
     val error: LiveData<ErrorModel> get() = _error
 
+    /**
+     * Called to get details of the movie.
+     * @param id The movie id to request further details.
+     */
     fun getDetails(id: Int) {
         viewModelScope.launch {
             getDetails.call(id, onResult = object : UseCaseCallback<GetDetailsResponse> {

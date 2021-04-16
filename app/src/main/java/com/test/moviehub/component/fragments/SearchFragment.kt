@@ -40,6 +40,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     private val searchFragmentVM: SearchFragmentVM by viewModels()
     private val getDetailsVM: GetDetailsVM by viewModels()
     private var mJob: Job? = null
+    //variable to prevent live data from being observe more than one time (e.g. on back in navigation)
     private var isClicked = false
 
     override fun onCreateView(
@@ -58,6 +59,9 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
         registerObserver()
     }
 
+    /**
+     * function to register observers for the viewModel liveData.
+     */
     private fun registerObserver() {
         getDetailsVM.movie.observe(viewLifecycleOwner, {
             if (isClicked) {

@@ -51,6 +51,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     }
 
     private fun parseView() {
+        //binding data from navigation argument to view with dataBinding
         binding.apply {
             movie = DetailFragmentArgs.fromBundle(requireArguments()).movie
         }

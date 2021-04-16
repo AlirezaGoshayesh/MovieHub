@@ -57,6 +57,9 @@ data class GetDetailsResponse(
     val voteCount: Int
 ) : Serializable {
 
+    /**
+     * get a usable string from genres.
+     */
     fun getGenresString(): String {
         var mGenres = ""
         val genresMap = genres.map { it.name }
@@ -65,7 +68,9 @@ data class GetDetailsResponse(
         }
         return mGenres.subSequence(0, mGenres.length - 2).toString()
     }
-
+    /**
+     * get a usable string from summary.
+     */
     fun getSummary(): String {
         return if (overview.isNullOrEmpty())
             "No summary available"

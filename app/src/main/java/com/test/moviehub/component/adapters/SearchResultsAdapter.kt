@@ -29,10 +29,16 @@ class SearchResultsAdapter @Inject constructor() :
 
     private var onClickListener: ItemListOnClickListener? = null
 
+    //the listener for clicking items
     interface ItemListOnClickListener {
+        /**
+         * Called when a view is clicked in the recyclerview.
+         * @param id The movie id to request further details.
+         */
         fun onClick(id: Int)
     }
 
+    //setting the listener from the adapter user
     fun setOnClickListener(onClickListener: ItemListOnClickListener) {
         this.onClickListener = onClickListener
     }
@@ -56,6 +62,7 @@ class SearchResultsAdapter @Inject constructor() :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bindMovie(item: MovieResult) {
+            //binding item to its view with dataBinding
             binding.apply {
                 movie = item
                 root.setOnClickListener {
@@ -76,6 +83,7 @@ class SearchResultsAdapter @Inject constructor() :
     }
 }
 
+//binding adapter to show image url from xml code
 @BindingAdapter("image")
 fun setImage(image: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
