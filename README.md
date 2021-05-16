@@ -2,6 +2,7 @@
 
 A short-time project that uses the most recent technologies, libraries and best practices.
 
+![icon](app/src/main/res/mipmap-mdpi/ic_launcher.png)
 ![sample](gif.gif)
 
 In this project
