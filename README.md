@@ -2,6 +2,8 @@
 
 A short-time project that uses the most recent technologies, libraries and best practices.
 
+![sample](gif.gif)
+
 In this project
 - User sees a list of popular movies
 - User can search a movie name
@@ -19,3 +21,6 @@ Technologies and libraries:
 - Paging V3
 
 Used web service: https://www.themoviedb.org/documentation/api
+
+## Caution
+If you encounter the timeout exception, use vpn.
