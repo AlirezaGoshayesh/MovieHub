@@ -22,5 +22,4 @@ Technologies and libraries:
 
 Used web service: https://www.themoviedb.org/documentation/api
 
-## Caution
-If you encounter the timeout exception, use vpn.
+- Caution: If you encounter the timeout exception, use vpn.
