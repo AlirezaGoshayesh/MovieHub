@@ -20,8 +20,9 @@ import com.test.moviehub.component.dialogs.LoadingDialog
 import com.test.moviehub.component.viewModels.SearchFragmentVM
 import com.test.moviehub.databinding.FragmentSearchBinding
 import com.test.moviehub.component.viewModels.GetDetailsVM
+import com.test.moviehub.domain.base.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,9 +40,6 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     lateinit var searchResultsAdapter: SearchResultsAdapter
     private val searchFragmentVM: SearchFragmentVM by viewModels()
     private val getDetailsVM: GetDetailsVM by viewModels()
-    private var mJob: Job? = null
-    //variable to prevent live data from being observe more than one time (e.g. on back in navigation)
-    private var isClicked = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,22 +61,50 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
      * function to register observers for the viewModel liveData.
      */
     private fun registerObserver() {
-        getDetailsVM.movie.observe(viewLifecycleOwner, {
-            if (isClicked) {
-                isClicked = false
-                loadingDialog.hide()
-                findNavController().navigate(
-                    SearchFragmentDirections.actionFragmentMainToFragmentDetail(
-                        it, it.title
-                    )
-                )
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            getDetailsVM.movie.collect {
+                when (it) {
+                    is Resource.Error -> {
+                        loadingDialog.hide()
+                        Toast.makeText(
+                            requireContext(),
+                            it.exception.message,
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                    Resource.Loading -> loadingDialog.show()
+                    is Resource.Success -> {
+                        loadingDialog.hide()
+                        findNavController().navigate(
+                            SearchFragmentDirections.actionFragmentMainToFragmentDetail(
+                                it.data, it.data.title
+                            )
+                        )
+                    }
+                }
             }
-        })
-        getDetailsVM.error.observe(viewLifecycleOwner, {
-            isClicked = false
-            loadingDialog.hide()
-            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-        })
+            searchFragmentVM.movies.collectLatest {
+                when (it) {
+                    is Resource.Error -> {
+                        loadingDialog.hide()
+                        Toast.makeText(
+                            requireContext(),
+                            it.exception.message,
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                    Resource.Loading -> loadingDialog.show()
+                    is Resource.Success -> {
+                        loadingDialog.hide()
+                        it.data.collectLatest { pagingData ->
+                            searchResultsAdapter.submitData(pagingData)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun parseView() {
@@ -94,18 +120,12 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     }
 
     private fun search(query: String? = null) {
-        mJob?.cancel()
-        mJob = lifecycleScope.launch {
-            if (query == null)
-                searchFragmentVM.getPopularMovies().collectLatest {
-                    binding.textTop = getString(R.string.popular)
-                    searchResultsAdapter.submitData(it)
-                }
-            else
-                searchFragmentVM.searchMovies(query).collectLatest {
-                    binding.textTop = "Movies including $query"
-                    searchResultsAdapter.submitData(it)
-                }
+        if (query == null) {
+            binding.textTop = getString(R.string.popular)
+            searchFragmentVM.getPopular()
+        } else {
+            searchFragmentVM.search(query)
+            binding.textTop = "Movies including $query"
         }
     }
 
@@ -149,8 +169,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     }
 
     override fun onClick(id: Int) {
-        isClicked = true
-        getDetailsVM.getDetails(id)
+        getDetailsVM.getDetailsOfMovie(id)
         loadingDialog.show()
     }
 }

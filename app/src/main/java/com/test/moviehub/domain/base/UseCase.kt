@@ -1,37 +1,31 @@
 package com.test.moviehub.domain.base
 
-import com.test.moviehub.domain.exceptions.IErrorHandler
-import kotlinx.coroutines.CancellationException
+abstract class UseCase<in P, R> {
 
-abstract class UseCase<Response, Params>(private val errorHandler: IErrorHandler) {
-
-    /**
-     * every usecase must implement this method for implement business core
+    /** Executes the use case asynchronously and returns a [Resource].
+     *
+     * @return a [Resource].
+     *
+     * @param parameters the input parameters to run the use case with
      */
-    abstract suspend fun run(params: Params? = null): Response
 
-    /**
-     * an interface that presentation layer work with this
-     */
-    suspend fun call(
-        params: Params? = null,
-        onResult: (UseCaseCallback<Response>)?
-    ) {
-        try {
-            val result = run(params)
-            onResult?.onSuccess(result)
-            println("$TAG Response: $result")
-        } catch (e: CancellationException) {
-            println("$TAG Error: $e")
-            onResult?.onError(errorHandler.handleException(e))
+    suspend operator fun invoke(parameters: P): Resource<R> {
+        return try {
+            execute(parameters).let {
+                Resource.Success(it)
+            }
         } catch (e: Exception) {
-            println("$TAG Error:$e cause: ${e.cause}")
-            onResult?.onError(errorHandler.handleException(e))
+            Resource.Error(e)
         }
     }
+
+    /**
+     * Override this to set the code to be executed.
+     */
+    @Throws(RuntimeException::class)
+    protected abstract suspend fun execute(parameters: P): R
 
     companion object {
         private val TAG = UseCase::class.java.name
     }
-
 }
