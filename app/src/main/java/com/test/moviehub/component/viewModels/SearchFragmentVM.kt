@@ -20,27 +20,19 @@ class SearchFragmentVM @Inject constructor(
     private val getPopularMovies: GetPopularMovies
 ) : ViewModel() {
 
-    private val _movies =
-        MutableStateFlow<Resource<Flow<PagingData<MovieResult>>>>(Resource.Loading)
-    val movies: StateFlow<Resource<Flow<PagingData<MovieResult>>>> get() = _movies
-
     /**
      * Called when search is performed to get the flow of paging data.
      * @param query The movie name to request.
      */
-    fun search(query: String) {
-        viewModelScope.launch {
-            _movies.value = (searchMovies(query))
-        }
+    suspend fun searchMovies(query: String): Flow<PagingData<MovieResult>> {
+        return searchMovies.call(query).cachedIn(viewModelScope)
     }
 
     /**
      * Called when user first loads the app and get the flow of paging data.
      */
-    fun getPopular() {
-        viewModelScope.launch {
-            _movies.value = (getPopularMovies(0))
-        }
+    suspend fun getPopularMovies(): Flow<PagingData<MovieResult>> {
+        return getPopularMovies.call().cachedIn(viewModelScope)
     }
 
 }

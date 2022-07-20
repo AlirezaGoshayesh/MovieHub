@@ -22,6 +22,7 @@ import com.test.moviehub.databinding.FragmentSearchBinding
 import com.test.moviehub.component.viewModels.GetDetailsVM
 import com.test.moviehub.domain.base.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -40,6 +41,8 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     lateinit var searchResultsAdapter: SearchResultsAdapter
     private val searchFragmentVM: SearchFragmentVM by viewModels()
     private val getDetailsVM: GetDetailsVM by viewModels()
+
+    private var mJob: Job? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,26 +87,6 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
                     }
                 }
             }
-            searchFragmentVM.movies.collectLatest {
-                when (it) {
-                    is Resource.Error -> {
-                        loadingDialog.hide()
-                        Toast.makeText(
-                            requireContext(),
-                            it.exception.message,
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                    }
-                    Resource.Loading -> loadingDialog.show()
-                    is Resource.Success -> {
-                        loadingDialog.hide()
-                        it.data.collectLatest { pagingData ->
-                            searchResultsAdapter.submitData(pagingData)
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -120,12 +103,18 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     }
 
     private fun search(query: String? = null) {
-        if (query == null) {
-            binding.textTop = getString(R.string.popular)
-            searchFragmentVM.getPopular()
-        } else {
-            searchFragmentVM.search(query)
-            binding.textTop = "Movies including $query"
+        mJob?.cancel()
+        mJob = lifecycleScope.launch {
+            if (query == null)
+                searchFragmentVM.getPopularMovies().collectLatest {
+                    binding.textTop = getString(R.string.popular)
+                    searchResultsAdapter.submitData(it)
+                }
+            else
+                searchFragmentVM.searchMovies(query).collectLatest {
+                    binding.textTop = "Movies including $query"
+                    searchResultsAdapter.submitData(it)
+                }
         }
     }
 
