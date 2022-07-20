@@ -24,4 +24,5 @@ ext {
     gsonVersion = '2.8.6'
     okhttpInterceptorVersion = '3.12.1'
     paging_version = "3.0.0-beta03"
+    lifeCycleVersion = "2.4.0"
 }

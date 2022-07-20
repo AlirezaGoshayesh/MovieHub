@@ -4,11 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.test.moviehub.data.model.GetDetailsResponse
 import com.test.moviehub.data.model.MovieResult
 import com.test.moviehub.domain.GetPopularMovies
 import com.test.moviehub.domain.SearchMovies
+import com.test.moviehub.domain.base.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
