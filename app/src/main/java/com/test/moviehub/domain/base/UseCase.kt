@@ -1,6 +1,8 @@
 package com.test.moviehub.domain.base
 
-abstract class UseCase<in P, R> {
+import com.test.moviehub.domain.exceptions.IErrorHandler
+
+abstract class UseCase<in P, R>(private val errorHandler: IErrorHandler) {
 
     /** Executes the use case asynchronously and returns a [Resource].
      *
@@ -12,10 +14,12 @@ abstract class UseCase<in P, R> {
     suspend operator fun invoke(parameters: P): Resource<R> {
         return try {
             execute(parameters).let {
+                println("$TAG Response: $it")
                 Resource.Success(it)
             }
         } catch (e: Exception) {
-            Resource.Error(e)
+            println("$TAG Error:$e cause: ${e.cause}")
+            Resource.Error(errorHandler.handleException(e))
         }
     }
 

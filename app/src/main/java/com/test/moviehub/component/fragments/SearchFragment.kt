@@ -71,7 +71,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
                         loadingDialog.hide()
                         Toast.makeText(
                             requireContext(),
-                            it.exception.message,
+                            "${it.errorModel.getErrorMessage()} with code ${it.errorModel.code}",
                             Toast.LENGTH_SHORT
                         )
                             .show()

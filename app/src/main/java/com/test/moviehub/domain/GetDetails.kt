@@ -6,8 +6,9 @@ import com.test.moviehub.domain.exceptions.IErrorHandler
 import javax.inject.Inject
 
 class GetDetails @Inject constructor(
-    private val repository: Repository
-) : UseCase<Int, GetDetailsResponse>() {
+    private val repository: Repository,
+    errorHandler: IErrorHandler
+) : UseCase<Int, GetDetailsResponse>(errorHandler) {
     override suspend fun execute(parameters: Int): GetDetailsResponse {
         return repository.getDetails(parameters)
     }
