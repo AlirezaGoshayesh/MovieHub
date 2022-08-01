@@ -15,6 +15,7 @@
         android:theme="@style/Theme.MovieHub"
         tools:ignore="UnusedAttribute">
         <activity
+            android:exported="true"
             android:name=".component.activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
